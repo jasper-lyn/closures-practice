@@ -1,8 +1,16 @@
 var wrapLog = function (callback, name) {
   /* your code here */
+  return function() {
+    let inputParameters = []
+    for (let i in arguments) {
+      inputParameters.push(arguments[i])
+    }
+console.log(name + "(" + inputParameters + ") " + "=> " + callback.apply(null, inputParameters))
+  }
 };
 
 var area = function (x, y) {
+
   return x * y;
 };
 var logArea = wrapLog(area, "area");
